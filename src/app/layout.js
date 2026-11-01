@@ -1,8 +1,14 @@
 import "./globals.css"
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 export const metadata = {
-  title: "Ainin Elok Rahmadani | portofolio",
-  description: "portofolio Ainin Elok Rahmadani, siswa smk calon Junior Web Developer dikelas Industri UBIG",
+  title: {
+    default: "Ainin Elok Rahmadani | Portofolio",
+    template: "%s | Ainin Elok Rahmadani",
+  },
+  description:
+    "Portofolio Ainin Elok Rahmadani, siswi SMK calon Junior Web Developer di Kelas Industri UBIG.",
 };
 
 export default function RootLayout({ children }) {
@@ -10,7 +16,11 @@ export default function RootLayout({ children }) {
     <html
       lang="id"
       >
-      <body className="min-h-full flex flex-col bg-latar textgray-800">{children}</body>
+      <body className="min-h-full flex flex-col bg-latar textgray-800">
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
