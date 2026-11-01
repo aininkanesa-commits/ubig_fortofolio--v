@@ -40,7 +40,7 @@ export default function KeahlianPage() {
               </span>
             </div>
 
-            <h2 className="break-words text-xl font-bold text-utama sm:text-2xl">
+            <h2 className="wrap-break-words text-xl font-bold text-utama sm:text-2xl">
               {item.nama}
             </h2>
 
