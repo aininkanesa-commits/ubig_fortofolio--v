@@ -1,7 +1,7 @@
 import "./globals.css"  
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import {Suspense} from "react";
+
 
 export const metadata = {
   title: {
@@ -18,9 +18,7 @@ export default function RootLayout({ children }) {
       lang="id"
       >
       <body className="min-h-full flex flex-col bg-latar text-gray-800">
-        <Suspense fallback={null}>
         <Navbar />
-        </Suspense>
         {children}
         <Footer />
       </body>

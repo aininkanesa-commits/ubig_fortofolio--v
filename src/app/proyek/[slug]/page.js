@@ -1,8 +1,17 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { proyek } from "@/data/proyek";
 
+// Membuat halaman berdasarkan data proyek
+export function generateStaticParams() {
+  return proyek.map((item) => ({
+    slug: item.slug,
+  }));
+}
+
+// Mengatur metadata halaman
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const item = proyek.find((p) => p.slug === slug);
@@ -17,6 +26,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
+// Halaman detail proyek
 export default async function DetailProyek({ params }) {
   const { slug } = await params;
   const item = proyek.find((p) => p.slug === slug);

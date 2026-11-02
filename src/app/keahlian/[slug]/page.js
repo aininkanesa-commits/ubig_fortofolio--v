@@ -1,7 +1,16 @@
+
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { keahlian } from "@/data/keahlian";
 
+// Membuat halaman detail berdasarkan data keahlian
+export function generateStaticParams() {
+  return keahlian.map((item) => ({
+    slug: item.slug,
+  }));
+}
+
+// Mengatur judul halaman
 export async function generateMetadata({ params }) {
   const { slug } = await params;
 
@@ -14,6 +23,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
+// Halaman detail keahlian
 export default async function DetailKeahlianPage({ params }) {
   const { slug } = await params;
 
@@ -28,6 +38,7 @@ export default async function DetailKeahlianPage({ params }) {
   return (
     <main className="py-10">
       <div className="max-w-2xl rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+
         <p className="text-sm font-semibold text-gray-500">
           DETAIL KEAHLIAN
         </p>
@@ -50,6 +61,7 @@ export default async function DetailKeahlianPage({ params }) {
         >
           ← Kembali ke Keahlian
         </Link>
+
       </div>
     </main>
   );

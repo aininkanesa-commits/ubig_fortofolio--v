@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import { Suspense, useState } from "react";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import Link from "next/link";
 
 const menu = [
   { href: "/", label: "Beranda" },
@@ -12,7 +12,7 @@ const menu = [
   { href: "/kontak", label: "Kontak" },
 ];
 
-export default function Navbar() {
+function NavbarContent() {
   const pathname = usePathname();
   const [menuTerbuka, setMenuTerbuka] = useState(false);
 
@@ -75,5 +75,13 @@ export default function Navbar() {
         </ul>
       </nav>
     </header>
+  );
+}
+
+export default function Navbar() {
+  return (
+    <Suspense fallback={null}>
+      <NavbarContent />
+    </Suspense>
   );
 }
