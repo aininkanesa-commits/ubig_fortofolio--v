@@ -9,11 +9,11 @@ export default function KontakPage() {
   return (
     <main className="mx-auto w-full max-w-6xl px-6 py-12">
       <div className="mb-8 text-left ">
-        <h1 className="text-3xl font-bold text-utama dark:text-white">
+        <h1 className="text-3xl font-bold text-utama dark:text-sky-200 dark:text-white">
           Hubungi Saya
         </h1>
 
-        <p className="mt-3 text-gray-600 dark:text-gray-300">
+        <p className="mt-3 text-gray-600 dark:text-gray-400 dark:text-gray-300">
           Punya pertanyaan, saran, atau ingin bekerja sama? Silakan isi formulir di bawah ini atau hubungi saya melalui email dan media sosial.
         </p>
       </div>
@@ -23,8 +23,8 @@ export default function KontakPage() {
         <FromKontak />
 
         {/* Informasi Kontak */}
-        <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-          <h2 className="mb-4 text-xl font-bold text-utama dark:text-white">
+        <section className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <h2 className="mb-4 text-xl font-bold text-utama dark:text-sky-200 dark:text-white">
             Temukan Saya
           </h2>
 

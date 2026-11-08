@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       lang="id"
       suppressHydrationWarning
       >
-      <body className="min-h-screen flex flex-col bg-latar text-gray-800 dark:text-gray-100">
+      <body className="min-h-screen flex flex-col bg-latar dark:bg-gray-900 text-gray-800 dark:text-gray-100">
         <Navbar />
         {children}
         <Footer />

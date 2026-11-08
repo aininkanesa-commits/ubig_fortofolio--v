@@ -36,7 +36,7 @@ export default function FilterProyek({ proyek }) {
               className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-utama ${
                 aktif
                   ? "border-aksen bg-aksen text-white"
-                  : "border-utama text-utama hover:bg-utama hover:text-white dark:border-sky-200 dark:text-sky-200"
+                  : "border-utama text-utama dark:text-sky-200 hover:bg-utama hover:text-white dark:border-sky-200 dark:text-sky-200"
               }`}
             >
               {kategori}
@@ -48,7 +48,7 @@ export default function FilterProyek({ proyek }) {
       <div className="mt-5 max-w-md">
         <label
           htmlFor="pencarian-proyek"
-          className="mb-2 block font-semibold text-utama dark:text-sky-200"
+          className="mb-2 block font-semibold text-utama dark:text-sky-200 dark:text-sky-200"
         >
           Cari proyek
         </label>
@@ -59,7 +59,7 @@ export default function FilterProyek({ proyek }) {
             value={pencarian}
             onChange={(event) => setPencarian(event.target.value)}
             placeholder="Contoh: kalkulator"
-            className="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-4 py-2 text-gray-800 outline-none transition focus:border-utama focus:ring-2 focus:ring-utama/20 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
+            className="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white dark:bg-gray-800 px-4 py-2 text-gray-800 outline-none transition focus:border-utama focus:ring-2 focus:ring-utama/20 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
           />
           {pencarian && (
             <button
@@ -88,7 +88,7 @@ export default function FilterProyek({ proyek }) {
         </div>
       ) : (
         <p
-          className="mt-4 rounded-2xl border border-slate-200 bg-white p-8 text-center text-slate-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
+          className="mt-4 rounded-2xl border border-slate-200 bg-white dark:bg-gray-800 p-8 text-center text-slate-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
           role="status"
         >
           Belum ada proyek yang cocok.

@@ -50,12 +50,12 @@ export default function FromKontak() {
   }
 
   const kelasInput =
-    "w-full rounded-lg border border-gray-300 bg-white px-3 py-3 text-gray-800 outline-none transition focus:border-utama focus:ring-2 focus:ring-utama/20 dark:border-gray-600 dark:bg-gray-700 dark:text-white";
+    "w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-3 text-gray-800 outline-none transition focus:border-utama focus:ring-2 focus:ring-utama/20 dark:border-gray-600 dark:bg-gray-700 dark:text-white";
 
   const kelasError = "mt-2 text-sm text-red-700 dark:text-red-400";
 
   return (
-    <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+    <section className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
     
       <form onSubmit={kirim} noValidate className="space-y-5">
         <div>

@@ -24,7 +24,7 @@ export default function FilterKeahlian({ skills }) {
             className={
               levelAktif === level
                 ? "rounded-lg bg-aksen px-4 py-2 font-semibold text-white"
-                : "rounded-lg border border-utama px-4 py-2 font-semibold text-utama transition hover:bg-utama hover:text-white"
+                : "rounded-lg border border-utama px-4 py-2 font-semibold text-utama dark:text-sky-200 transition hover:bg-utama hover:text-white"
             }
           >
             {level}
@@ -32,7 +32,7 @@ export default function FilterKeahlian({ skills }) {
         ))}
       </div>
 
-      <p className="mb-4 text-sm text-gray-600">
+      <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
         Menampilkan {keahlianTerfilter.length} keahlian
       </p>
 

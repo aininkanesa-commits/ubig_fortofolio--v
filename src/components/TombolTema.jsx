@@ -1,32 +1,29 @@
 "use client";
-
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function TombolTema() {
   const [gelap, setGelap] = useState(false);
 
+  
   useEffect(() => {
-    const temaTersimpan = localStorage.getItem("tema");
-    const gunakanGelap = temaTersimpan === "gelap";
-
-    document.documentElement.classList.toggle("dark", gunakanGelap);
-    setGelap(gunakanGelap);
+    if (localStorage.getItem("tema") === "gelap") {
+      document.documentElement.classList.add("dark");
+      setGelap(true);
+    }
   }, []);
 
+  
   function gantiTema() {
-    const temaBaru = !gelap;
-
-    document.documentElement.classList.toggle("dark", temaBaru);
-    localStorage.setItem("tema", temaBaru ? "gelap" : "terang");
-    setGelap(temaBaru);
+    const isDark = document.documentElement.classList.toggle("dark");
+    setGelap(isDark);
+    localStorage.setItem("tema", isDark ? "gelap" : "terang");
   }
 
   return (
     <button
       type="button"
       onClick={gantiTema}
-      aria-pressed={gelap}
-      className="w-full rounded-lg border border-white px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-utama sm:w-auto"
+      className="rounded-lg border border-white px-3 py-1 text-sm font-semibold text-white hover:border-aksen hover:bg-aksen"
     >
       {gelap ? "Mode Terang" : "Mode Gelap"}
     </button>

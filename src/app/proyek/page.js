@@ -13,11 +13,11 @@ export default function ProyekPage() {
       {/* Header */}
       <section className="mb-10">
         
-        <h1 className="text-3xl font-bold text-utama sm:text-4xl">
+        <h1 className="text-3xl font-bold text-utama dark:text-sky-200 sm:text-4xl">
           Proyek Saya
         </h1>
 
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-gray-600 dark:text-gray-400 sm:text-base">
           Berikut beberapa hasil karya dan proyek yang saya
           kerjakan selama mempelajari Rekayasa Perangkat Lunak.
         </p>

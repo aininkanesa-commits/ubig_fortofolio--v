@@ -37,21 +37,21 @@ export default async function DetailKeahlianPage({ params }) {
 
   return (
     <main className="py-10">
-      <div className="max-w-2xl rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+      <div className="max-w-2xl rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-8 shadow-sm">
 
         <p className="text-sm font-semibold text-gray-500">
           DETAIL KEAHLIAN
         </p>
 
-        <h1 className="mt-3 text-3xl font-bold text-utama">
+        <h1 className="mt-3 text-3xl font-bold text-utama dark:text-sky-200">
           {item.nama}
         </h1>
 
-        <span className="mt-4 inline-block rounded-full bg-latar px-4 py-2 text-sm font-semibold text-utama">
+        <span className="mt-4 inline-block rounded-full bg-latar dark:bg-gray-900 px-4 py-2 text-sm font-semibold text-utama dark:text-sky-200">
           {item.level}
         </span>
 
-        <p className="mt-6 leading-relaxed text-gray-600">
+        <p className="mt-6 leading-relaxed text-gray-600 dark:text-gray-400">
           {item.deskripsi}
         </p>
 

@@ -9,7 +9,7 @@ const proyekTerbaru = proyek.slice(-3);
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-latar">
+   <main className="min-h-screen bg-latar dark:bg-gray-900 dark:bg-gray-900">
       <div className="mx-auto max-w-5xl space-y-5 px-5 py-10">
 
         <Hero
@@ -18,7 +18,7 @@ export default function Home() {
         />
 
         <section className="mt-10">
-          <h2 className="mb-4 text-2xl font-bold text-utama">
+          <h2 className="mb-4 text-2xl font-bold text-utama dark:text-sky-200 dark:text-sky-200">
             Keahlian
           </h2>
 
@@ -26,7 +26,7 @@ export default function Home() {
         </section>
 
         <section className="mt-10">
-          <h2 className="mb-4 text-2xl font-bold text-utama">
+          <h2 className="mb-4 text-2xl font-bold text-utama dark:text-sky-200">
             Proyek Saya
           </h2>
 
