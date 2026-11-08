@@ -9,7 +9,7 @@
 }
 
 .dark {
-  --color-utama: #A8C7FA;
+  --color-utama: #1D3557;
   --color-aksen: #FF7B84;
   --color-latar: #17212F;
 }
@@ -30,3 +30,19 @@ html.dark body {
   color: #F1F5F9 !important;
 }
 
+
+html.dark header,
+html.dark footer {
+  background-color: #1D3557 !important;
+  color: #F1FAEE !important;
+}
+
+
+html.dark table {
+  color: #F1F5F9;
+}
+
+html.dark thead {
+  background-color: #1D3557 !important;
+  color: white !important;
+}
