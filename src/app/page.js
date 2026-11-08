@@ -1,16 +1,9 @@
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import ProyekCard from "@/components/ProyekCard";
-import SkillCard from "@/components/SkillCard";
+import FilterKeahlian from "@/components/FilterKeahlian";
+import { keahlian as skills } from "@/data/keahlian";
 import { proyek } from "@/data/proyek";
-
-const keahlian = [
-  { nama: "HTML", level: "Menengah" },
-  { nama: "CSS", level: "Menengah" },
-  { nama: "Git dan GitHub", level: "Dasar" },
-  { nama: "Desain poster dengan Canva", level: "Mahir" },
-  { nama: "JavaScript", level: "Dasar" },
-];
 
 const proyekTerbaru = proyek.slice(-3);
 
@@ -29,15 +22,7 @@ export default function Home() {
             Keahlian
           </h2>
 
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
-            {keahlian.map((item) => (
-              <SkillCard
-                key={item.nama}
-                nama={item.nama}
-                level={item.level}
-              />
-            ))}
-          </div>
+          <FilterKeahlian skills={skills} />
         </section>
 
         <section className="mt-10">

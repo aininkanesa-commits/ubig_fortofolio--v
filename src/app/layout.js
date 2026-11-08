@@ -1,6 +1,7 @@
 import "./globals.css"  
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import Script from "next/script";
 
 
 export const metadata = {
@@ -16,8 +17,9 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="id"
+      suppressHydrationWarning
       >
-      <body className="min-h-full flex flex-col bg-latar text-gray-800">
+      <body className="min-h-screen flex flex-col bg-latar text-gray-800 dark:text-gray-100">
         <Navbar />
         {children}
         <Footer />

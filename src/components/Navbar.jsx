@@ -1,71 +1,50 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import TombolTema from "@/components/TombolTema";
 
 const menu = [
   { href: "/", label: "Beranda" },
   { href: "/tentang", label: "Tentang" },
-  { href: "/keahlian", label: "Keahlian" },
   { href: "/proyek", label: "Proyek" },
   { href: "/kontak", label: "Kontak" },
 ];
 
 function NavbarContent() {
   const pathname = usePathname();
-  const [menuTerbuka, setMenuTerbuka] = useState(false);
 
   return (
     <header className="bg-utama text-white">
-      <nav className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-4 py-4 md:flex-nowrap">
+      <nav className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-4">
 
-        
+        {/* Nama */}
         <Link
           href="/"
-          onClick={() => setMenuTerbuka(false)}
-          className="text-xl font-bold"
+          className="text-lg font-bold sm:text-xl"
         >
           Ainin Elok Rahmadani
         </Link>
 
-        
-        <button
-          type="button"
-          onClick={() => setMenuTerbuka(!menuTerbuka)}
-          aria-label="Menu navigasi"
-          aria-expanded={menuTerbuka}
-          className="rounded-lg border border-white/40 px-3 py-1 text-2xl md:hidden"
-        >
-          {menuTerbuka ? "×" : "☰"}
-        </button>
-
-       
-        <ul
-          className={`${
-            menuTerbuka ? "flex" : "hidden"
-          } w-full flex-col gap-3 pt-2 md:flex md:w-auto md:flex-row md:flex-wrap md:items-center md:gap-x-5 md:gap-y-2 md:pt-0`}
-        >
+        {/* Menu Navigasi */}
+        <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3">
           {menu.map((item) => {
-            let kelas = "text-gray-200 hover:text-white";
-
             let aktif = pathname.startsWith(item.href);
 
             if (item.href === "/") {
               aktif = pathname === "/";
             }
 
-            if (aktif) {
-              kelas =
-                "font-bold text-white underline underline-offset-8";
-            }
-
             return (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  onClick={() => setMenuTerbuka(false)}
-                  className={kelas}
+                  className={
+                    aktif
+                      ? "font-bold text-white underline underline-offset-8"
+                      : "text-gray-200 transition hover:text-white"
+                  }
                 >
                   {item.label}
                 </Link>
@@ -73,6 +52,10 @@ function NavbarContent() {
             );
           })}
         </ul>
+
+        {/* Tombol Tema */}
+        <TombolTema />
+
       </nav>
     </header>
   );
