@@ -1,8 +1,16 @@
-import "./globals.css"  
+import "./globals.css"
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import Script from "next/script";
+import { Geist, Geist_Mono } from "next/font/google";
 
+const geistSans = Geist({
+variable: "--font-sans",
+subsets: ["latin"],
+});
+const geistMono = Geist_Mono({
+variable: "--font-mono",
+subsets: ["latin"],
+});
 
 export const metadata = {
   title: {
@@ -18,8 +26,9 @@ export default function RootLayout({ children }) {
     <html
       lang="id"
       suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable}`}
       >
-      <body className="min-h-screen flex flex-col bg-latar dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+      <body className="min-h-screen flex flex-col bg-background text-foreground">
         <Navbar />
         {children}
         <Footer />
