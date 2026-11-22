@@ -2,14 +2,18 @@
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import ProyekCard from "@/components/ProyekCard";
-import FilterKeahlian from "@/components/FilterKeahlian";
-import { keahlian as skills } from "@/data/keahlian";
+import SkillCard from "@/components/SkillCard";
 import { buttonVariants } from "@/components/ui/button";
 import { supabase } from "@/lib/supabase";
 
 export const instant = false;
 
 export default async function Home() {
+  const { data: skills } = await supabase
+  .from("skills")
+  .select("*")
+  .order("id");
+
   const { data: proyekTerbaru, error } = await supabase
     .from("projects")
     .select("*")
@@ -30,7 +34,15 @@ export default async function Home() {
             Keahlian
           </h2>
 
-          <FilterKeahlian skills={skills} />
+          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+            {skills && skills.map((item) => (
+            <SkillCard
+            key={item.id}
+            nama={item.nama}
+            level={item.level}
+            />
+          ))}
+      </div>
         </section>
 
         <section className="mt-10">

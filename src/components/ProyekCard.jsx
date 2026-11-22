@@ -15,15 +15,16 @@ export default function ProyekCard({ proyek }) {
       href={`/proyek/${proyek.slug}`}
       className="block rounded-xl hover:shadow-md"
     >
-      <Card className="h-full">
-        <Image
-          src={proyek.gambar_url?.trimEnd()}
-          alt={`Tangkapan layar ${proyek.judul}`}
-          width={640}
-          height={420}
-          loading="eager"
-          className="h-auto w-full"
-        />
+      <Card className="h-full overflow-hidden">
+        <div className="relative aspect-video w-full bg-muted">
+          <Image
+            src={proyek.gambar_url?.trimEnd()}
+            alt={`Tangkapan layar ${proyek.judul}`}
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="object-contain"
+          />
+        </div>
 
         <CardHeader>
           <Badge>{proyek.kategori}</Badge>

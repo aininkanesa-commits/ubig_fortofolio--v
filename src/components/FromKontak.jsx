@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function FromKontak() {
   const [nama, setNama] = useState("");
@@ -55,8 +56,6 @@ export default function FromKontak() {
   const kelasError = "mt-2 text-sm text-red-700 dark:text-red-400";
 
   return (
-    <section className="rounded-2xl border border-border bg-card p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-    
       <form onSubmit={kirim} noValidate className="space-y-5">
         <div>
           <label className="mb-2 block font-medium">Nama</label>
@@ -129,13 +128,9 @@ export default function FromKontak() {
           </p>
         )}
 
-        <button
-          type="submit"
-          className="rounded-lg bg-aksen px-6 py-3 font-semibold text-white transition hover:opacity-90"
-        >
-          Kirim Pesan
-        </button>
+        <Button type="submit" size="lg">
+        Kirim Pesan
+        </Button>
       </form>
-    </section>
   );
 }
