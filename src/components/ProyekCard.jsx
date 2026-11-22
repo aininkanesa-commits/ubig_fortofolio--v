@@ -27,10 +27,29 @@ export default function ProyekCard({ proyek }) {
         </div>
 
         <CardHeader>
-          <Badge>{proyek.kategori}</Badge>
+          <div className="flex flex-wrap items-center gap-2">
+            {proyek.kategori.split(/[,&]/).map((kategori) => {
+              const namaKategori = kategori.trim().toLowerCase();
+
+              return (
+                <Badge
+                  key={namaKategori}
+                  variant={
+                    ["html", "css", "javascript"].includes(namaKategori)
+                      ? namaKategori
+                      : "default"
+                  }
+                >
+                  {kategori.trim()}
+                </Badge>
+              );
+            })}
+          </div>
+
           <CardTitle className="text-lg text-primary">
             {proyek.judul}
           </CardTitle>
+
           <CardDescription>
             {proyek.deskripsi}
           </CardDescription>

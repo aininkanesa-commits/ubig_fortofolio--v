@@ -5,20 +5,39 @@ import ProyekCard from "@/components/ProyekCard";
 import SkillCard from "@/components/SkillCard";
 import { buttonVariants } from "@/components/ui/button";
 import { supabase } from "@/lib/supabase";
+import { cacheLife } from "next/cache";
 
 export const instant = false;
 
-export default async function Home() {
+async function ambilDataBeranda() {
+  "use cache";
+
+  cacheLife({
+    stale: 60,
+    revalidate: 60,
+    expire: 3600,
+  });
+
   const { data: skills } = await supabase
-  .from("skills")
-  .select("*")
-  .order("id");
+    .from("skills")
+    .select("*")
+    .order("id");
 
   const { data: proyekTerbaru, error } = await supabase
     .from("projects")
     .select("*")
     .order("created_at", { ascending: false })
     .limit(3);
+
+  return {
+    skills,
+    proyekTerbaru,
+    error: error?.message ?? null,
+  };
+}
+
+export default async function Home() {
+  const { skills, proyekTerbaru, error } = await ambilDataBeranda();
 
   return (
     <main className="min-h-screen bg-background dark:bg-gray-900">
@@ -36,13 +55,13 @@ export default async function Home() {
 
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
             {skills && skills.map((item) => (
-            <SkillCard
-            key={item.id}
-            nama={item.nama}
-            level={item.level}
-            />
-          ))}
-      </div>
+              <SkillCard
+                key={item.id}
+                nama={item.nama}
+                level={item.level}
+              />
+            ))}
+          </div>
         </section>
 
         <section className="mt-10">
@@ -52,7 +71,7 @@ export default async function Home() {
 
           {error && (
             <p className="text-aksen">
-              Data proyek gagal dimuat: {error.message}
+              Data proyek gagal dimuat: {error}
             </p>
           )}
 
