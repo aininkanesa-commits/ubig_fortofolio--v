@@ -1,15 +1,15 @@
 
-import Link from "next/link";
-import Hero from "@/components/Hero";
-import ProyekCard from "@/components/ProyekCard";
-import SkillCard from "@/components/SkillCard";
-import { buttonVariants } from "@/components/ui/button";
+import FilterProyek from "@/components/FilterProyek";
 import { supabase } from "@/lib/supabase";
 import { cacheLife } from "next/cache";
 
 export const instant = false;
 
-async function ambilDataBeranda() {
+export const metadata = {
+  title: "Proyek",
+};
+
+async function ambilProyek() {
   "use cache";
 
   cacheLife({
@@ -18,87 +18,48 @@ async function ambilDataBeranda() {
     expire: 3600,
   });
 
-  const { data: skills } = await supabase
-    .from("skills")
-    .select("*")
-    .order("id");
-
-  const { data: proyekTerbaru, error } = await supabase
+  const { data, error } = await supabase
     .from("projects")
     .select("*")
-    .order("created_at", { ascending: false })
-    .limit(3);
+    .order("created_at");
 
   return {
-    skills,
-    proyekTerbaru,
+    proyek: data,
     error: error?.message ?? null,
   };
 }
 
-export default async function Home() {
-  const { skills, proyekTerbaru, error } = await ambilDataBeranda();
+export default async function ProyekPage() {
+  const { proyek, error } = await ambilProyek();
 
   return (
-    <main className="min-h-screen bg-background dark:bg-gray-900">
-      <div className="mx-auto max-w-5xl space-y-5 px-5 py-10">
+    <main className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+      <section className="mb-10">
+        <h1 className="text-3xl font-bold text-primary sm:text-4xl">
+          Proyek Saya
+        </h1>
 
-        <Hero
-          nama="Ainin Elok Rahmadani"
-          tagline="Siswi kelas X di SMKN 1 Kepanjen yang tertarik pada web development dan desain."
-        />
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
+          Berikut beberapa hasil karya dan proyek yang saya
+          kerjakan selama mempelajari Rekayasa Perangkat Lunak.
+        </p>
+      </section>
 
-        <section className="mt-10">
-          <h2 className="mb-4 text-2xl font-bold text-primary dark:text-sky-200">
-            Keahlian
-          </h2>
+      {error && (
+        <p className="mt-8 rounded-xl border border-dashed border-input p-6 text-center text-aksen">
+          Data proyek gagal dimuat: {error}
+        </p>
+      )}
 
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-            {skills && skills.map((item) => (
-              <SkillCard
-                key={item.id}
-                nama={item.nama}
-                level={item.level}
-              />
-            ))}
-          </div>
-        </section>
+      {proyek && proyek.length === 0 && (
+        <p className="mt-8 rounded-xl border border-dashed border-input p-6 text-center text-muted-foreground">
+          Belum ada proyek di database.
+        </p>
+      )}
 
-        <section className="mt-10">
-          <h2 className="mb-4 text-2xl font-bold text-primary">
-            Proyek Saya
-          </h2>
-
-          {error && (
-            <p className="text-aksen">
-              Data proyek gagal dimuat: {error}
-            </p>
-          )}
-
-          {proyekTerbaru && proyekTerbaru.length === 0 && (
-            <p className="text-muted-foreground">
-              Belum ada proyek di database.
-            </p>
-          )}
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {proyekTerbaru?.map((item) => (
-              <ProyekCard key={item.slug} proyek={item} />
-            ))}
-          </div>
-
-          <Link
-            href="/proyek"
-            className={buttonVariants({
-              size: "lg",
-              className: "mt-6",
-            })}
-          >
-            Lihat semua proyek
-          </Link>
-        </section>
-
-      </div>
+      {proyek && proyek.length > 0 && (
+        <FilterProyek proyek={proyek} />
+      )}
     </main>
   );
 }
